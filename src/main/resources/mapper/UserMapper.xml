@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.lanou.dicegame.mapper.UserMapper">
+    <insert id="addUser" parameterType="user">
+        insert into user(user_name, user_nick_name, user_password)
+        values(#{userName},#{userNickName},#{userPassword})
+    </insert>
+
+    <update id="updateUserIconURL">
+        update user set user_icon_abs_path = #{param2},user_icon_url = #{param3} where id = #{param1}
+    </update>
+
+    <select id="queryUserByPassword" resultType="user">
+        select * from user where user_password = #{password}
+    </select>
+
+    <select id="selectUserByUserName" resultType="user">
+        select * from user where user_name = #{username}
+    </select>
+
+</mapper>
